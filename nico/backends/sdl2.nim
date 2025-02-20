@@ -1829,6 +1829,7 @@ proc getRecordSeconds*(): int =
     return 0
 
 when defined(emscripten):
+  type cbool* {.importc: "bool", nodecl.} = uint8
   type em_callback_func* = proc() {.cdecl.}
   {.push importc.}
   proc emscripten_set_main_loop*(f: em_callback_func, fps: cint, simulate_infinite_loop: cbool)
